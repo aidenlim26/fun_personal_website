@@ -66,12 +66,12 @@ I lead discussions on how the tools fit into everyday school life and bring stud
     { organisation: "General Learning (YC F24)", entries: [
             { title: "RevisionDojo Brand Ambassador", meta: "Oct 2026 – Present · Part-time · Hong Kong SAR · On-site", summary: "Selected from hundreds of applicants as one of 16 students in RevisionDojo’s first-ever Brand Ambassador cohort. RevisionDojo is an IB revision platform built by General Learning (YC F24)." },
         ] },
-    { organisation: "Independent Study", entries: [
-            { title: "Software Engineering (Backend)", meta: "Nov 2026 – Present · Part-time · Hong Kong SAR", summary: "Following Code with Mosh’s backend developer roadmap: Python (OOP), then data structures & algorithms, databases (MySQL, MongoDB) and Django." },
-            { title: "Machine Learning", meta: "Jun 2025 – Oct 2026", summary: "I studied the mathematics behind machine learning and completed DeepLearning.AI’s mathematics specialisation.", linkedinDescription: "Self-study, ~3–5 hours/week, on the mathematical foundations of machine learning. Completed the DeepLearning.AI Mathematics for ML & Data Science specialisation (linear algebra, calculus, probability & statistics). Started the Stanford Online ML Specialisation before moving to software engineering.\n\nSkills: Linear Algebra, Calculus, Probability & Statistics, NumPy, Pandas, Matplotlib, Data preprocessing" },
-        ] },
-    { organisation: "Singapore Selects", entries: [
-            { title: "Forward", meta: "Jul 2023 – Present · Seasonal · Singapore · Hybrid", summary: "Represent the Singapore Ice Hockey Association. Part of the Unified National Training Program (UNTP).", linkedinDescription: "Represent the Singapore Ice Hockey Association. Part of the Unified National Training Program (UNTP)." },
+    { organisation: "E-Services Group (ESG)", entries: [
+            { title: "Management Intern", meta: "Jul 2025 – Aug 2025 · Internship · Shenzhen, Guangdong, China · On-site", summary: "I designed and deployed an internal WeCom AI chatbot under engineering supervision to help staff retrieve company information.", linkedinDescription: `Custom AI Chatbot Deployment: Independently designed and deployed an enterprise-grade AI chatbot onto enterprise WeCom, trained on internal data—including financial records, promotional materials, and company documentation—under engineering supervision.
+
+Security & Performance Optimisation: Consistently delivering high-accuracy responses with average query response times under 3 seconds.
+
+Workflow Acceleration: Enhanced cross-departmental operations by accelerating new hire onboarding and streamlining daily internal data retrieval workflows.` },
         ] },
     { organisation: "Timelit", id: "timelit", entries: [
             { title: "Co-Founder & Chief Strategy Officer", meta: "Jun 2025 – Aug 2026 · Full-time · Hong Kong · On-site", summary: "I led strategy and development for an AI scheduling app and raised HKD 32,000 in seed funding.", linkedinDescription: `Built an AI-powered scheduling and productivity application integrating machine learning models and AI agents to optimise focus blocks and daily user workflows.
@@ -82,12 +82,12 @@ Developed and executed early user testing programs, driving continuous feature i
 
 Engineered core AI capabilities to analyse individual work habits, eliminate friction and procrastination, and generate adaptive smart schedules.`, href: "https://timelit.base44.app/", linkLabel: "Visit Timelit" },
         ] },
-    { organisation: "E-Services Group (ESG)", entries: [
-            { title: "Management Intern", meta: "Jul 2025 – Aug 2025 · Internship · Shenzhen, Guangdong, China · On-site", summary: "I designed and deployed an internal WeCom AI chatbot under engineering supervision to help staff retrieve company information.", linkedinDescription: `Custom AI Chatbot Deployment: Independently designed and deployed an enterprise-grade AI chatbot onto enterprise WeCom, trained on internal data—including financial records, promotional materials, and company documentation—under engineering supervision.
-
-Security & Performance Optimisation: Consistently delivering high-accuracy responses with average query response times under 3 seconds.
-
-Workflow Acceleration: Enhanced cross-departmental operations by accelerating new hire onboarding and streamlining daily internal data retrieval workflows.` },
+    { organisation: "Independent Study", entries: [
+            { title: "Software Engineering (Backend)", meta: "Nov 2026 – Present · Part-time · Hong Kong SAR", summary: "Following Code with Mosh’s backend developer roadmap: Python (OOP), then data structures & algorithms, databases (MySQL, MongoDB) and Django." },
+            { title: "Machine Learning", meta: "Jun 2025 – Oct 2026", summary: "I studied the mathematics behind machine learning and completed DeepLearning.AI’s mathematics specialisation.", linkedinDescription: "Self-study, ~3–5 hours/week, on the mathematical foundations of machine learning. Completed the DeepLearning.AI Mathematics for ML & Data Science specialisation (linear algebra, calculus, probability & statistics). Started the Stanford Online ML Specialisation before moving to software engineering.\n\nSkills: Linear Algebra, Calculus, Probability & Statistics, NumPy, Pandas, Matplotlib, Data preprocessing" },
+        ] },
+    { organisation: "Singapore Selects", entries: [
+            { title: "Forward", meta: "Jul 2023 – Present · Seasonal · Singapore · Hybrid", summary: "Represent the Singapore Ice Hockey Association. Part of the Unified National Training Program (UNTP).", linkedinDescription: "Represent the Singapore Ice Hockey Association. Part of the Unified National Training Program (UNTP)." },
         ] },
 ];
 export const education: Entry[] = [
