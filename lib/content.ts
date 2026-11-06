@@ -1,5 +1,6 @@
 export const site = {
   name: "Aiden Lim",
+  title: "Aiden Lim | Student Developer & SISHK AI Club Founder",
   url: "https://aidenlim.vercel.app",
   email: "aidenlim26w@gmail.com",
   github: "https://github.com/aidenlim26",
@@ -7,7 +8,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/aidenlim26w/",
   linkedinHandle: "linkedin.com/in/aidenlim26w",
   description:
-    "Aiden Lim. Co-founder at Timelit and founder and president of the SISHK AI Club. Hong Kong.",
+    "Aiden Lim is a student developer in Hong Kong, founder and president of the SISHK AI Club, and chair of the Board of AI Integration.",
 } as const;
 
 export const hero = {
