@@ -1,24 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Newsreader } from "next/font/google";
-import "./globals.css";
 import { site } from "@/lib/content";
-
-// Newsreader's `opsz` axis defaults to 16. next/font drops every non-weight
-// axis unless it is asked for, so without this the display face ships at text
-// optical size and looks spindly at heading sizes.
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  axes: ["opsz"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const archivo = Archivo({
-  variable: "--font-archivo",
-  subsets: ["latin"],
-  display: "swap",
-});
+import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -39,13 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: "#f6f1e7",
-};
+export const viewport: Viewport = { themeColor: "#f7f6f2" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${archivo.variable}`}>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

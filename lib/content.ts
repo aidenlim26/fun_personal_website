@@ -1,176 +1,82 @@
+type Entry = {
+  title: string;
+  meta?: string;
+  summary?: string;
+  details?: readonly string[];
+};
+
+const name = "Aiden Lim";
+const club = "SISHK AI Club";
+const clubRole = "Founder and President";
+const board = "Board of AI Integration";
+// Role and interest confirmed in the redesign brief. Other copy comes from
+// the public LinkedIn profile and Aiden's LinkedIn post about SISHK Scheduling.
+const boardRole = "Chair";
+
 export const site = {
-  name: "Aiden Lim",
-  title: "Aiden Lim | Student Developer & SISHK AI Club Founder",
+  name,
   url: "https://aidenlim.vercel.app",
-  email: "aidenlim26w@gmail.com",
-  github: "https://github.com/aidenlim26",
-  githubHandle: "github.com/aidenlim26",
   linkedin: "https://www.linkedin.com/in/aidenlim26w/",
-  linkedinHandle: "linkedin.com/in/aidenlim26w",
-  description:
-    "Aiden Lim is a student developer in Hong Kong, founder and president of the SISHK AI Club, and chair of the Board of AI Integration.",
-} as const;
+  title: `${name} | ${club} & ${board}`,
+  description: `${name} is the ${clubRole} of the ${club} and ${boardRole} of the ${board}.`,
+};
 
-export const hero = {
-  name: "Aiden Lim",
+export const profile = {
+  club,
+  clubRole,
+  board,
+  boardRole,
   location: "Hong Kong",
-  roles: ["Co-founder at Timelit", "Founder and president of the SISHK AI Club"],
-} as const;
-
-export const recognition = {
-  heading: "Recognition",
-  items: [
+  clubSummary: "I started the club to build AI literacy across our school community. It has grown to more than 80 members.",
+  outreach: "I coordinate initiatives involving technology executives and HKU AIMED.",
+  scheduling: {
+    title: "SISHK Scheduling",
+    meta: "School testing",
+    summary: "Our club is building and testing a website to make school scheduling easier. I presented it to Singapore’s Minister for Education during a school visit.",
+    details: [
+      "Students can book teacher consultations through the site.",
+      "Teachers can find shared free periods and reserve rooms.",
+      "Heads of Department can arrange cover for absences.",
+    ],
+  } satisfies Entry,
+  projects: [
     {
-      title: "Gold Award, United Nations World Youth Painting Competition 2026",
-      details: ["UNESCO", "Theme: Peaceful Homeland"],
+      title: "Timelit",
+      meta: "Founder",
+      summary: "I led development and strategy for an AI scheduling app and secured its initial funding.",
     },
     {
-      title: "Gold Award, London Youth Art Competition Finals 2025",
+      title: "HFT Trading Simulator",
+      meta: "Python · June 2026",
+      summary: "I built a simulated exchange where 15 trading bots run different strategies and trade with each other.",
       details: [
-        "British Art and Education Group",
-        "Theme: A riot of blossoms",
-        "Exhibited at Iconic Images Gallery, London, among 1,550+ applicants",
+        "I wrote the order matching engine and modelled price impact using both market data and the bots’ own trades.",
       ],
     },
-    {
-      title: "Singapore Youth National Ice Hockey Team",
-      details: ["Forward", "Since July 2023"],
-    },
-  ],
-} as const;
-
-export const credentials = {
-  heading: "Credentials",
-  issuer: "DeepLearning.AI",
-  certificates: [
-    {
-      title: "Mathematics for Machine Learning and Data Science Specialization",
-      href: "https://coursera.org/verify/specialization/7N0SW774QVSQ",
-    },
-    {
-      title: "Probability & Statistics for Machine Learning & Data Science",
-      href: "https://coursera.org/verify/ZMF9YUR4IWAX",
-    },
-    {
-      title: "Calculus for Machine Learning and Data Science",
-      href: "https://coursera.org/verify/AVAS1CG3TPBT",
-    },
-    {
-      title: "Linear Algebra for Machine Learning and Data Science",
-      href: "https://coursera.org/verify/6UPYEQFYGZX9",
-    },
-  ],
+  ] satisfies Entry[],
   education: [
     {
-      title: "IGCSE",
-      detail: "Nine distinctions, Singapore International School Hong Kong",
+      title: "Singapore International School (Hong Kong)",
+      meta: "Education",
+      summary: "IB Diploma Programme. Earned nine IGCSE distinctions and received the school’s Academic Excellence Award in 2026.",
     },
     {
-      title: "IB Diploma",
-      detail:
-        "Singapore International School Hong Kong. Higher level mathematics (analysis and approaches), computer science and economics.",
+      title: "Mathematics for Machine Learning and Data Science",
+      meta: "DeepLearning.AI specialisation · August 2026",
+      details: ["Linear Algebra", "Calculus", "Probability and Statistics"],
     },
+  ] satisfies Entry[],
+  interests: [
+    { title: "Ice hockey" },
     {
-      title: "Languages",
-      detail: "English, Cantonese and Mandarin. Working Spanish.",
+      title: "Painting",
+      summary: "I earned gold in the 2026 United Nations World Youth Painting Competition and the 2025 London Youth Art Competition finals.",
+      details: [
+        "Peaceful Homeland was the theme of the 2026 entry.",
+        "My 2025 entry, on the theme A Riot of Blossoms, was exhibited at Iconic Images Gallery in London.",
+      ],
     },
-  ],
-} as const;
+  ] satisfies Entry[],
+};
 
-export type OvertureBlock = { title?: string; text: string };
-export type OvertureLink = { href: string; label: string; external?: boolean };
-
-export const overture = {
-  label: "An exploded automatic watch movement",
-  skip: "Skip the scene",
-  skipHref: "#recognition",
-  stops: [
-    {
-      part: "Rotor",
-      section: "AI Club",
-      blocks: [
-        {
-          title: "Program Leadership & Scale",
-          text: "Spearheading global AI educational programs, scaling membership to 80+ members and securing dedicated institutional funding.",
-        },
-        {
-          title: "Campus & Ecosystem Integration",
-          text: "Partnered directly with school leadership to advance campus-wide AI literacy, hosting internal workshops and cross-school initiatives.",
-        },
-        {
-          title: "Technical Pipelines",
-          text: "Formulated scalable technical architecture and workflows to empower adjacent student organizations and campus communities.",
-        },
-        {
-          title: "Strategic Partnerships",
-          text: "Executed high-impact industry outreach, securing guest speakers across Silicon Valley, Shenzhen tech hubs, tech founders, and C-suite executives.",
-        },
-        {
-          title: "Special Projects",
-          text: "Currently directing the deployment of an AI-driven scoliosis screening initiative across primary and secondary student populations using mskalign\u2122 Wukong\u2014a non-invasive, radiation-free 4D spine alignment system in collaboration with HKU AIMed.",
-        },
-      ],
-    },
-    {
-      part: "Balance wheel",
-      section: "Timelit",
-      link: { href: "https://timelit.base44.app", label: "timelit.base44.app", external: true },
-      blocks: [
-        {
-          text: "Built an AI-powered scheduling and productivity application integrating machine learning models and AI agents to optimise focus blocks and daily user workflows.",
-        },
-        {
-          text: "Raised HKD 32,000 in early seed funding and recruited a high-profile advisory board to guide strategic growth and product development.",
-        },
-        {
-          text: "Developed and executed early user testing programs, driving continuous feature iteration and algorithmic refinement toward public launch.",
-        },
-        {
-          text: "Engineered core AI capabilities to analyse individual work habits, eliminate friction and procrastination, and generate adaptive smart schedules.",
-        },
-      ],
-    },
-    {
-      part: "Gear train",
-      section: "HFT Trading Simulator",
-      link: {
-        href: "https://github.com/aidenlim26/hft_trading_simulator",
-        label: "github.com/aidenlim26/hft_trading_simulator",
-        external: true,
-      },
-      blocks: [
-        {
-          text: "Programmed 15 autonomous bots executing distinct quantitative strategies with custom entry/exit logic.",
-        },
-        {
-          text: "Engineered a matching engine where bots trade exclusively with each other.",
-        },
-        {
-          text: "Built a hybrid pricing engine blending 80% real market data with 20% bot transaction volume to simulate real-time price impact.",
-        },
-      ],
-    },
-    {
-      part: "Mainspring barrel",
-      section: "E-Services Group",
-      blocks: [
-        {
-          title: "Custom AI Chatbot Deployment",
-          text: "Independently designed and deployed an enterprise-grade AI chatbot onto enterprise WeCom, trained on internal data\u2014including financial records, promotional materials, and company documentation\u2014under engineering supervision.",
-        },
-        {
-          title: "Security & Performance Optimisation",
-          text: "Consistently delivering high-accuracy responses with average query response times under 3 seconds.",
-        },
-        {
-          title: "Workflow Acceleration",
-          text: "Enhanced cross-departmental operations by accelerating new hire onboarding and streamlining daily internal data retrieval workflows.",
-        },
-      ],
-    },
-  ],
-} as const;
-
-export const contact = {
-  heading: "Contact",
-} as const;
+export type { Entry };

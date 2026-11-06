@@ -1,361 +1,174 @@
-@import "tailwindcss";
-
-/* ---------------------------------------------------------------------------
-   Tokens
-
-   One ground colour across the whole page. Ink for text and rules. The ochre
-   is reserved for the focused watch part in the Phase 2 scene and is not used
-   anywhere on the page itself: not on headings, links, borders or decoration.
-
-   Contrast against --cream:
-     --ink    15.4:1
-     --muted   5.8:1
-     --ochre   2.9:1 (which is why it never carries text)
---------------------------------------------------------------------------- */
-@theme {
-  --color-cream: #f6f1e7;
-  --color-ink: #1c1a17;
-  --color-muted: #645d52;
-  --color-ochre: #b8862f;
-
-  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-}
-
 :root {
-  --rule: color-mix(in srgb, var(--color-ink) 18%, transparent);
+  --paper: #f7f6f2;
+  --ink: #252923;
+  --muted: #555d54;
+  --accent: #3c594a;
+  --rule: #d5d9cf;
+  --tint: #ebeee6;
+  color-scheme: light;
+  font: 106.25% / 1.6 system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
 }
 
-@layer base {
-  html {
-    color-scheme: light;
-    background-color: var(--color-cream);
-    scroll-behavior: smooth;
-    scroll-padding-top: 2rem;
-  }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+h1, h2, h3, h4, p, ul { margin: 0; }
+p, ul { max-inline-size: 65ch; }
+ul { padding-inline-start: 1.25rem; }
+li + li { margin-block-start: 0.35rem; }
 
-  body {
-    background-color: var(--color-cream);
-    color: var(--color-ink);
-    font-family: var(--font-sans);
-    font-size: 1.0625rem; /* 17px, the scale's base */
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+a { color: var(--accent); text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 0.12em; }
+a:active, summary:active { background: var(--tint); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
-  /* Visible on every interactive element. Never suppressed. */
-  :focus-visible {
-    outline: 2px solid var(--color-ink);
-    outline-offset: 3px;
-  }
-
-  ::selection {
-    background-color: color-mix(in srgb, var(--color-ink) 16%, transparent);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    ::before,
-    ::after {
-      transition: none !important;
-      animation: none !important;
-    }
-  }
+.shell {
+  max-inline-size: 56.47rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.1rem, 4vw, 2rem);
 }
 
-@layer components {
-  /* -------------------------------------------------------------------------
-     Grid
+.skip-link {
+  position: absolute;
+  inset: 1rem auto auto 1rem;
+  z-index: 2;
+  background: var(--paper);
+  padding: 0.5rem 0.8rem;
+}
 
-     12 columns, asymmetric, left-aligned. Content sits in 1–7; the marginalia
-     rail sits in 9–12 and carries every date, role, institution and
-     verification link. Below `md` the whole thing is one column and the rail
-     falls, in source order, directly beneath its heading.
-  ------------------------------------------------------------------------- */
-  .page-grid {
+.visually-hidden, .skip-link:not(:focus) {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
+
+.intro {
+  padding-block: clamp(2.75rem, 8vw, 5rem) clamp(2rem, 5vw, 3.4rem);
+  border-block-end: 1px solid var(--rule);
+}
+
+.location, .meta {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+h1 {
+  font-size: clamp(2.65rem, 8vw, 5.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  margin-block: 0.22em 0.32em;
+  font-weight: 700;
+}
+
+.roles { list-style: none; padding: 0; font-size: clamp(1rem, 2.5vw, 1.22rem); }
+.roles strong { font-weight: 650; }
+
+.intro-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.15rem;
+  margin-block-start: 1.4rem;
+}
+
+.intro-links a, .contents a, footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.6rem;
+}
+
+.primary-link {
+  background: var(--accent);
+  color: var(--paper);
+  border-radius: 0.35rem;
+  padding: 0.4rem 0.82rem;
+  text-decoration: none;
+}
+
+.primary-link:hover { background: #304a3c; }
+.primary-link:active { background: #283f33; }
+
+.reading-layout { padding-block-start: clamp(1.5rem, 4vw, 2.5rem); }
+.contents { font-size: 0.88rem; }
+.contents p { font-weight: 650; }
+.contents ul {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.contents li { margin: 0; }
+.contents a { line-height: 1.35; }
+.sections { min-inline-size: 0; }
+
+section { scroll-margin-block-start: 1.2rem; }
+section + section {
+  border-block-start: 1px solid var(--rule);
+  margin-block-start: 2.2rem;
+  padding-block-start: 2.2rem;
+}
+
+h2, h3, h4 { line-height: 1.2; }
+h2 {
+  font-size: clamp(1.65rem, 4vw, 2.3rem);
+  letter-spacing: -0.035em;
+  margin-block-end: 0.45em;
+}
+h3 { font-size: 1.18rem; letter-spacing: -0.015em; }
+h4 { font-size: 1.03rem; }
+.entry { margin-block-start: 1.25rem; }
+.entry + .entry { border-block-start: 1px solid var(--rule); padding-block-start: 1rem; }
+.entry p, .software p { margin-block-start: 0.25rem; }
+
+.software {
+  margin-block: 1.25rem;
+  padding: clamp(0.9rem, 3vw, 1.35rem);
+  border-radius: 0.45rem;
+  background: var(--tint);
+}
+
+.software h3 { margin-block-end: 0.75rem; }
+.software ul { margin-block-start: 0.55rem; }
+details { margin-block-start: 0.3rem; }
+summary {
+  cursor: pointer;
+  color: var(--accent);
+  min-block-size: 2.6rem;
+  padding-block: 0.5rem;
+  inline-size: fit-content;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-block-start: 3rem;
+  padding-block: 0.75rem;
+  border-block-start: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+@media (min-width: 800px) {
+  .reading-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-    width: 100%;
-    max-width: 78rem;
-    margin-inline: auto;
-    padding-inline: clamp(1.25rem, 5vw, 3.5rem);
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 2.8rem);
   }
 
-  @media (width >= 48rem) {
-    .page-grid {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      column-gap: 1.5rem;
-    }
-
-    .col-head {
-      grid-column: 1 / 8;
-      grid-row: 1;
-    }
-    .col-rail {
-      grid-column: 9 / 13;
-      grid-row: 1 / span 2;
-    }
-    .col-body {
-      grid-column: 1 / 8;
-      grid-row: 2;
-    }
-    .col-full {
-      grid-column: 1 / 13;
-    }
-  }
-
-  /* -------------------------------------------------------------------------
-     Section rhythm
-
-     Exactly one rule owns vertical padding on a section. Sections are divided
-     by a hairline and nothing else: no background change, no panel, no card.
-  ------------------------------------------------------------------------- */
-  .section {
-    padding-block: clamp(4.5rem, 9vh, 6.5rem);
-    border-top: 1px solid var(--rule);
-  }
-
-  /* Type scale. Base 17px, ratio 1.25. The name and the section titles are
-     the only large things on the page; everything else is small and calm. */
-  .h1 {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(3.052rem, 1.6rem + 6.4vw, 6.5rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-  }
-
-  .h2 {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.953rem, 1.45rem + 2.1vw, 2.441rem);
-    line-height: 1.05;
-    letter-spacing: -0.015em;
-  }
-
-  .h3 {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 1.0625rem;
-    line-height: 1.4;
-  }
-
-  .prose-body {
-    max-width: 62ch;
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    text-wrap: pretty;
-  }
-
-  .prose-body + .prose-body {
-    margin-top: 1.1em;
-  }
-
-  .small {
-    font-size: 0.875rem;
-    line-height: 1.45;
-  }
-
-  /* -------------------------------------------------------------------------
-     Marginalia rail
-  ------------------------------------------------------------------------- */
-  .rail {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1.75rem;
-    padding-top: 1.1rem;
-    border-top: 1px solid var(--rule);
-    font-size: 0.875rem;
-    line-height: 1.45;
-    color: var(--color-muted);
-    text-wrap: pretty;
-  }
-
-  @media (width >= 48rem) {
-    .rail {
-      margin-top: 0.65rem;
-      padding-top: 0;
-      border-top: 0;
-    }
-  }
-
-  .rail-item {
-    margin: 0;
-  }
-
-  /* -------------------------------------------------------------------------
-     Links: ink, underlined, and that is sufficient. No arrows appended.
-  ------------------------------------------------------------------------- */
-  .link {
-    color: inherit;
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
-    transition: text-decoration-thickness 150ms ease;
-  }
-
-  .link:hover {
-    text-decoration-thickness: 2px;
-  }
-
+  .contents { position: sticky; inset-block-start: 1.2rem; align-self: start; }
+  .contents ul { display: block; }
 }
 
-@layer components {
-  /* -------------------------------------------------------------------------
-     Overture
-
-     Static mode is the server-rendered default: the drawing, then the four
-     captions as a plain list. Scene mode is switched on by the client only on
-     a wide viewport with WebGL and no reduced-motion preference. Native
-     scroll throughout: the stage is sticky and nothing is snapped. The drawn
-     state trails the scroll position by a short ease, which lives in
-     components/watch-scene.ts. --overture-length is set inline from the
-     timeline in lib/watch-parts.ts (100vh stage plus the travel); the value
-     here is only a fallback.
-  ------------------------------------------------------------------------- */
-  .overture {
-    position: relative;
-  }
-
-  .overture-stage {
-    position: relative;
-  }
-
-  .overture-skip {
-    position: absolute;
-    top: 1.25rem;
-    right: clamp(1.25rem, 5vw, 3.5rem);
-    z-index: 3;
-    font-size: 0.875rem;
-  }
-
-  .overture-frame {
-    max-width: 78rem;
-    margin-inline: auto;
-    padding-inline: clamp(1.25rem, 5vw, 3.5rem);
-    padding-block: 3.5rem 1rem;
-  }
-
-  .overture-frame svg {
-    display: block;
-    width: 100%;
-    max-width: 44rem;
-    height: auto;
-  }
-
-  .overture-captions {
-    list-style: none;
-    margin: 0 auto;
-    max-width: 78rem;
-    padding: 1rem clamp(1.25rem, 5vw, 3.5rem) 4rem;
-    display: grid;
-    gap: 1.5rem 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-    font-size: 0.875rem;
-    line-height: 1.45;
-  }
-
-  .overture-caption p {
-    margin: 0;
-  }
-
-  .overture-part {
-    font-weight: 600;
-  }
-
-  .overture-section {
-    color: var(--color-muted);
-  }
-
-  .overture-blocks {
-    list-style: none;
-    margin: 0.35rem 0 0;
-    padding: 0;
-    display: grid;
-    gap: 0.75rem;
-  }
-
-  .overture-block {
-    max-width: 38ch;
-    text-wrap: pretty;
-  }
-
-  .overture-block strong {
-    font-weight: 600;
-  }
-
-  .overture-caption a {
-    display: inline-block;
-    margin-top: 0.35rem;
-  }
-
-  .overture-canvas {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .overture[data-mode="scene"] {
-    height: var(--overture-length, 900vh);
-  }
-
-  .overture[data-mode="scene"] .overture-stage {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .overture[data-mode="scene"] .overture-frame {
-    display: none;
-  }
-
-  .overture[data-mode="scene"] .overture-captions {
-    display: block;
-    margin: 0;
-    padding: 0;
-    max-width: none;
-  }
-
-  .overture[data-mode="scene"] .overture-caption {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 24rem;
-    opacity: 0;
-  }
-
-  /* Sub-blocks stack in one grid cell so the caption is as tall as its
-     tallest block; the clip lets an outgoing block slide away cleanly. */
-  .overture[data-mode="scene"] .overture-blocks {
-    gap: 0;
-    overflow: hidden;
-  }
-
-  .overture[data-mode="scene"] .overture-block {
-    grid-area: 1 / 1;
-    max-width: none;
-    will-change: transform, opacity;
-  }
-
-  .overture[data-mode="scene"] .overture-caption[data-active="false"] {
-    pointer-events: none;
-  }
-}
-
-@layer utilities {
-  /* Motion budget: user-triggered only. The link underline transition and
-     the focus ring above. Nothing on this page animates on load or scroll. */
-  .tnum {
-    font-variant-numeric: tabular-nums;
-  }
+@media (max-width: 799px) {
+  .contents { margin-block-end: 1.4rem; }
 }
